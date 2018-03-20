@@ -21,6 +21,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "node-#{i}" do |node|
 
     node.vm.box = "centos-7.0-x86_64.box"
+    node.disksize.size = '100GB'
     node.vm.hostname = "node-#{i}"
     node.vm.network "public_network", bridge: INTERFACE, ip: IP
     node.vm.provision "shell" do |s|
