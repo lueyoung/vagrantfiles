@@ -22,8 +22,6 @@ Vagrant.configure("2") do |config|
 
     node.vm.box = "centos-7.0-x86_64.box"
     node.disksize.size = '100GB'
-    node.memory = 1024
-    node.cpu = 2
     node.vm.hostname = "node-#{i}"
     node.vm.network "public_network", bridge: INTERFACE, ip: IP
     node.vm.provision "shell" do |s|
@@ -31,6 +29,10 @@ Vagrant.configure("2") do |config|
       #inline: "ifconfig enp0s8 10.10.18.20#{i} netmask 255.0.0.0 up"
       s.inline = "sudo -s && (echo '9ol.8ik,';sleep 1;echo '9ol.8ik,') | passwd root && sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config && systemctl restart network && echo config done"
      #node.vm.provision :shell, path: "bootstrap.sh"
+    end
+    config.vm.provider "virtualbox" do |vb|
+      vb.memory = 1024*2
+      vb.cpu = 2
     end
     #node.vm.network "public_network", iauto_config: false
     # manual ip
