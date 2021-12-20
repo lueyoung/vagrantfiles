@@ -10,7 +10,9 @@ set username [lindex $argv 0]
 set password [lindex $argv 1]
 set hostname [lindex $argv 2]
 set HOME /root
-spawn ssh-copy-id -i ${HOME}/.ssh/id_rsa.pub $username@$hostname
+#spawn ssh-copy-id -i ${HOME}/.ssh/id_rsa.pub $username@$hostname
+#spawn ssh-copy-id -i /Users/younglue/.ssh/id_rsa.pub $username@$hostname
+spawn ssh-copy-id $username@$hostname
 expect {
             #first connect, no public key in ~/.ssh/known_hosts
             "Are you sure you want to continue connecting (yes/no)?" {
