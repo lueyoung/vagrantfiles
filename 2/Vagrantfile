@@ -8,7 +8,7 @@
 i = "2"
 INTERFACE = "en0: Wi-Fi (AirPort)"
 #IP = "192.168.31.24"+i
-IP = "10.172.8.24"+i
+IP = "10.123.1.24"+i
 
 Vagrant.configure("2") do |config|
   # The most common configuration options are documented and commented below.

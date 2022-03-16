@@ -22,4 +22,10 @@ status:
 reload:
 	$(call loopopt, $N, $@)
 
-.PHONY: all up clean destroy suspend stop
+config:
+	./batch-info.sh
+	./mk-ip-mac.py
+	./batch-ip-mac.sh
+	./batch-config.sh
+
+.PHONY: all up clean destroy suspend stop config
